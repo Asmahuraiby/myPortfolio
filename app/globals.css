@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  --line-color: #e5e7eb;
+}
+
+html.dark {
+  --line-color: rgba(255, 255, 255, 0.2);
+}
+@font-face {
+    font-family: "tajawal";
+    src: url("/tajawal/Tajawal-Light.ttf") format("truetype");
+    font-display: swap;
+}
+
+body {
+    font-family: "tajawal", sans-serif !important;
+}
+.borderBlack {
+  @apply border border-black/10;
+}
+
+/* Section eyebrow label */
+.section-badge {
+  position: relative;
+}
+
+.section-badge::before {
+  position: absolute;
+  bottom: 5px;
+  content: '';
+  width: 1.75rem;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #1a2f6ee3, #62adb7);
+}
+
