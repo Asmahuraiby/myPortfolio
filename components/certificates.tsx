@@ -13,25 +13,25 @@ export default function Certificates() {
       id: 1,
       title: "BachelorofIT" ,
       issuer: "UST_Location" ,
-      date: "January 2, 2022"
+      date: "June , 2021"
     },
     {
       id: 2,
       title: "TrainingCertificate" ,
       issuer: "Temmam_Location",
-      date: "January 2, 2022"
+      date: "Septemper , 2022"
     },
     {
       id: 3,
       title: "ExperienceCertificate" ,
       issuer: "Ysys_Location",
-      date: "January 2, 2022"
+      date: "August , 2023"
     },
     {
       id: 4,
       title: "ExperienceCertificate" ,
       issuer: "Otek_Location",
-      date: "January 2, 2022"
+      date: "July , 2026"
     }
   ];
 

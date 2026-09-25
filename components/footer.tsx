@@ -4,47 +4,45 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useTranslations } from 'next-intl';
 import { BsWhatsapp, BsEnvelope, BsGithub, BsTelephone } from "react-icons/bs";
+import AnimateOnScroll from "./animate-on-scroll";
+import AnimateStagger from "./animate-stagger";
 
 export default function Footer() {
   const translation = useTranslations();
 
   return (
-    <footer id="footer" className="bg-gray-950 border-t border-slate-800/50 py-14 text-slate-400 transition-colors duration-300 reveal revealed">
+    <footer id="footer" className="bg-gray-950 border-t border-slate-800/50 py-14 text-slate-400 transition-colors duration-300">
       <div className="container mx-auto px-3 sm:px-0">
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center pb-10 border-b border-slate-800/50">
 
-
+          {/* LEFT SIDE - Logo and Description */}
           <div className="md:col-span-5 space-y-4 text-left rtl:text-right">
-            <motion.div
-              initial={{ opacity: 0, scale: 0 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{
-                type: "tween",
-                duration: 0.2,
-              }}
-            >
+            <AnimateOnScroll animation="scale-up" duration={0.5}>
               <div className="flex items-center">
                 <img src="/icon-logo.png" className="h-12 rounded-full" alt="Logo" />
                 <div className="flex flex-col">
                   <span className="text-lg font-bold text-primary dark:text-white mb-0">{translation('asma')}</span>
-                  <span className="text-xs text-slate-300 dark:text-Gray500 ">{translation('asmaJob')}</span>
+                  <span className="text-xs text-slate-300 dark:text-Gray500">{translation('asmaJob')}</span>
                 </div>
               </div>
-            </motion.div>
-            <motion.p className="mt-6 text-sm md:text-lg text-slate-500 text-center sm:text-start dark:text-gray-400 max-w-lg"
-              initial={{ opacity: 0, y: 100 }}
-              animate={{ opacity: 1, y: 0 }}>
-              {translation('desc')}
-            </motion.p>
+            </AnimateOnScroll>
+            
+            <AnimateOnScroll animation="fade-in-up" delay={0.1} duration={0.5}>
+              <p className="mt-6 text-sm md:text-lg text-slate-500 text-center sm:text-start dark:text-gray-400 max-w-lg">
+                {translation('desc')}
+              </p>
+            </AnimateOnScroll>
           </div>
 
-
-          <div className="md:col-span-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:text-start text-center">
+          {/* RIGHT SIDE - Links and Social */}
+          <AnimateStagger staggerDelay={0.1} className="md:col-span-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:text-start text-center">
+            {/* Quick Links */}
             <div className="space-y-2.5">
-              <h4 className="text-xl  font-bold tracking-wider text-white uppercase">
-                {translation('quickLink')}</h4>
-              <ul className="space-y-1.5 text-base  sm:text-start text-center">
+              <h4 className="text-xl font-bold tracking-wider text-white uppercase">
+                {translation('quickLink')}
+              </h4>
+              <ul className="space-y-1.5 text-base sm:text-start text-center">
                 <li>
                   <a href="#home" className="nav-scroll-link hover:text-primary transition-colors flex items-center justify-center sm:justify-start gap-1">
                     <span>{translation('Home')}</span>
@@ -63,10 +61,12 @@ export default function Footer() {
               </ul>
             </div>
 
+            {/* My Info */}
             <div className="space-y-2.5">
-              <h4 className="text-xl  font-bold tracking-wider text-white uppercase">
-                {translation('myInfo')}</h4>
-              <ul className="space-y-1.5 text-base ">
+              <h4 className="text-xl font-bold tracking-wider text-white uppercase">
+                {translation('myInfo')}
+              </h4>
+              <ul className="space-y-1.5 text-base">
                 <li>
                   <a href="#experience" className="nav-scroll-link hover:text-primary transition-colors flex items-center justify-center sm:justify-start gap-1">
                     <span>{translation('Experience')}</span>
@@ -85,9 +85,8 @@ export default function Footer() {
               </ul>
             </div>
 
+            {/* Social and Download CV */}
             <div className="space-y-2.5 flex flex-col items-center justify-center">
-              {/* <h4 className="text-xl  font-bold tracking-wider text-white uppercase">
-                {translation('followMe')}</h4> */}
               <ul className="space-y-1.5 text-base flex sm:justify-start justify-center items-center gap-4 mb-3">
                 {/* WhatsApp */}
                 <li>
@@ -117,7 +116,7 @@ export default function Footer() {
                     href="https://github.com/Asmahuraiby"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center w-12 h-12 rounded-full bg-slate-900 border border-slate-800 dark:text-white text-white hover:bg-primary hover:text-white transition-all duration-300"
+                    className="flex items-center justify-center w-12 h-12 rounded-full bg-slate-900 border border-slate-800 text-white hover:bg-primary hover:text-white transition-all duration-300"
                   >
                     <BsGithub size={22} />
                   </a>
@@ -133,6 +132,7 @@ export default function Footer() {
                   </a>
                 </li>
               </ul>
+              
               <a
                 className="group sm:w-fit w-full px-7 py-3 flex items-center justify-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 active:scale-105 transition cursor-pointer borderBlack bg-primary text-black border-none"
                 href="/AsmaAlhuraiby.pdf"
@@ -142,22 +142,28 @@ export default function Footer() {
                 {translation('DownloadCV')}{" "}
               </a>
             </div>
-          </div>
+          </AnimateStagger>
 
         </div>
 
-
-        <div className="pt-8 flex flex-col md:flex-row items-center justify-center text-slate-500 gap-4">
-          <div className="">
-            {translation('copyRight')}
+        {/* Copyright */}
+        <AnimateOnScroll animation="fade-in" delay={0.3} duration={0.5}>
+          <div className="pt-8 flex flex-col md:flex-row items-center justify-center text-slate-500 gap-4">
+            <div>
+              {translation('copyRight')}
+            </div>
           </div>
-
-        </div>
+        </AnimateOnScroll>
 
       </div>
 
+      {/* Back to Top Button */}
       <div className="fixed bottom-7 rtl:left-7 ltr:right-7 animate-bounce">
-        <button id="footer-back-to-top" className="inline-flex items-center gap-2 bg-gradient-to-b from-primary to-primary/40  px-4 py-4 rounded-full text-xs  tracking-wider uppercase btn-press duration-200 transition-all cursor-pointer shadow-lg shrink-0">
+        <button 
+          id="footer-back-to-top" 
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="inline-flex items-center gap-2 bg-gradient-to-b from-primary to-primary/40 px-4 py-4 rounded-full text-xs tracking-wider uppercase btn-press duration-200 transition-all cursor-pointer shadow-lg shrink-0"
+        >
           <svg className="w-5 h-5 text-black shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
             <line x1="12" y1="19" x2="12" y2="5"></line>
             <polyline points="5 12 12 5 19 12"></polyline>
