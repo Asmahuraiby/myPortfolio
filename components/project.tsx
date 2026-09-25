@@ -11,7 +11,6 @@ export default function Project({
   title,
   description,
   tags,
-  imageUrl,
 }: ProjectProps) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -48,7 +47,7 @@ export default function Project({
           </ul>
         </div>
 
-        <Image
+        {/* <Image
           src={imageUrl}
           alt="Project I worked on"
           quality={95}
@@ -64,7 +63,7 @@ export default function Project({
         group-even:group-hover:rotate-2
 
         group-even:right-[initial] group-even:-left-40"
-        />
+        /> */}
       </section>
     </motion.div>
   );
