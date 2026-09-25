@@ -1,5 +1,4 @@
-/* eslint-disable linebreak-style */
-/* eslint-disable prettier/prettier */
+
 
 import baffle from 'baffle';
 import clsx from 'clsx';
@@ -24,7 +23,6 @@ const FlippingText = ({ words, className }: { words: string[]; className?: strin
   // Baffle effect - EXACTLY like the open source code
   useEffect(() => {
     const baffleElements = document.querySelectorAll('[data-baffle-flip]');
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const baffleInstances: any[] = [];
 
     baffleElements.forEach((el) => {
