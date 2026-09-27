@@ -1,6 +1,6 @@
 "use client";
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectCards, Pagination, Autoplay } from 'swiper/modules';
+import { EffectCards, Pagination, Autoplay, Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/effect-cards';
 import 'swiper/css/pagination';
@@ -38,93 +38,100 @@ export default function Projects() {
       </AnimateOnScroll>
       {/* Responsive Swiper */}
       <AnimateOnScroll animation="fade-in-up" delay={0.2} duration={0.6}>
-        <div className='sm:block hidden'>
-        <Swiper
-          modules={[Pagination, Autoplay]}
-          spaceBetween={30}
-          slidesPerView={1}
-          loop={true}
-          // pagination={{ clickable: true }}
-          autoplay={{ delay: 3000, disableOnInteraction: false }}
-          breakpoints={{
-            640: { slidesPerView: 2 }, // Tablets: 2 cards
-            1024: { slidesPerView: 3 }, // Desktop: 3 cards
-          }}
-          className="pb-12"
-        >
-          {projectsData.map((project, index) => (
-            <SwiperSlide key={index}>
-              <div className="group h-full flex flex-col border border-slate-200 dark:border-slate-800 rounded-3xl p-6 bg-white dark:bg-slate-900 transition-all hover:shadow-2xl hover:shadow-[#62adb7]/10">
-                {/* Image Container */}
-                <div className="overflow-hidden rounded-xl mb-4 h-[250px] border">
-                  <img
-                    src={project.img}
-                    alt={translation(project.title)}
-                    className="w-full h-full transition-transform duration-500 group-hover:scale-105"
-                  />
-                </div>
+        <div className='sm:block hidden relative'>
+          <Swiper
+            modules={[Pagination, Autoplay,Navigation]}
+            spaceBetween={30}
+            slidesPerView={1}
+            loop={true}
+            navigation={{
+              prevEl: '.swiper-button-prev',
+              nextEl: '.swiper-button-next',
+            }}
+            autoplay={{ delay: 3000, disableOnInteraction: false }}
+            breakpoints={{
+              640: { slidesPerView: 2 }, // Tablets: 2 cards
+              1024: { slidesPerView: 3 }, // Desktop: 3 cards
+            }}
+            className="pb-12"
+          >
+            {projectsData.map((project, index) => (
+              <SwiperSlide key={index}>
+                <div className="group h-full flex flex-col border border-slate-200 dark:border-slate-800 rounded-3xl p-6 bg-white dark:bg-slate-900 transition-all hover:shadow-2xl hover:shadow-[#62adb7]/10">
+                  {/* Image Container */}
+                  <div className="overflow-hidden rounded-xl mb-4 h-[250px] border">
+                    <img
+                      src={project.img}
+                      alt={translation(project.title)}
+                      className="w-full h-full transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
 
-                {/* Content */}
-                <div className="px-8 py-4 flex flex-col flex-grow dark:text-white">
-                  <h3 className="text-2xl font-bold mb-3">{translation(project.title)}</h3>
-                  <p className="text-sm opacity-70 h-12 mb-3 flex-grow">{translation(project.description)}</p>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tags.map(tag => (
-                      <span key={tag} className="text-[10px] uppercase bg-black/10 dark:bg-white/10 px-2 py-1 rounded">
-                        {tag}
-                      </span>
-                    ))}
+                  {/* Content */}
+                  <div className="px-8 py-4 flex flex-col flex-grow dark:text-white">
+                    <h3 className="text-2xl font-bold mb-3">{translation(project.title)}</h3>
+                    <p className="text-sm opacity-70 h-12 mb-3 flex-grow">{translation(project.description)}</p>
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {project.tags.map(tag => (
+                        <span key={tag} className="text-[10px] uppercase bg-black/10 dark:bg-white/10 px-2 py-1 rounded">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <a href={project.link} target="_blank" className="flex gap-2 text-[#62adb7] font-semibold hover:underline">
+                      {translation('ViewProject')}
+                      <BsArrowRight className="opacity-70 group-hover:translate-x-1 transition rtl:rotate-180 mt-1" />
+                    </a>
                   </div>
-                  <a href={project.link} target="_blank" className="flex gap-2 text-[#62adb7] font-semibold hover:underline">
-                    {translation('ViewProject')}
-                    <BsArrowRight className="opacity-70 group-hover:translate-x-1 transition rtl:rotate-180 mt-1" />
-                  </a>
                 </div>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
-      <div className='sm:hidden block'>
-        <Swiper
-          effect={'cards'}
-          grabCursor={true}
-          modules={[EffectCards, Pagination, Autoplay]}
-          autoplay={{ delay: 3000 }}
-          loop={true}
-          className="w-[280px] h-[400px] sm:w-[450px] sm:h-[500px]"
-        >
-          {projectsData.map((project, index) => (
-            <SwiperSlide key={index} className="rounded-3xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-lg">
-              <div className="flex flex-col h-full">
-                <div className="h-3/4 bg-gray-200 relative">
-                  {/* Replace with <Image /> for production */}
-                  <img
-                    src={project.img}
-                    alt={translation(project.title)}
-                    className="w-full h-full transition-transform duration-500 group-hover:scale-105"
-                  />
-                  {/* <div className="absolute inset-0 bg-gradient-to-br from-[#62adb7] to-[#1a2f6e] opacity-80" /> */}
-                </div>
-                <div className="px-8 py-5 flex flex-col flex-grow dark:text-white bg-white">
-                  <h3 className="text-2xl font-bold mb-3">{translation(project.title)}</h3>
-                  <p className="text-sm opacity-70 mb-3 flex-grow">{translation(project.description)}</p>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tags.map(tag => (
-                      <span key={tag} className="text-[10px] uppercase bg-black/10 dark:bg-white/10 px-2 py-1 rounded">
-                        {tag}
-                      </span>
-                    ))}
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          {/* 2. Custom Navigation Buttons */}
+          <div className="swiper-button-prev !text-[#62adb7] !w-9 !h-9 !rounded-full !bg-white/80 dark:!bg-slate-700/40 !shadow-lg backdrop-blur-sm absolute !-left-12 sm:!-left-4 z-50 !top-1/2 after:!text-xl after:!font-bold flex justify-center items-center rotate-180"></div>
+          <div className="swiper-button-next !text-[#62adb7] !w-9 !h-9 !rounded-full !bg-white/80 dark:!bg-slate-700/40 !shadow-lg backdrop-blur-sm absolute !-right-12 sm:!-right-4 z-50 !top-1/2 after:!text-xl after:!font-bold flex justify-center items-center"></div>
+        </div>
+        <div className='sm:hidden block'>
+          <Swiper
+            effect={'cards'}
+            grabCursor={true}
+            modules={[EffectCards, Pagination, Autoplay]}
+            autoplay={{ delay: 3000 }}
+            loop={true}
+            className="w-[280px] h-[400px] sm:w-[450px] sm:h-[500px]"
+          >
+            {projectsData.map((project, index) => (
+              <SwiperSlide key={index} className="rounded-3xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-lg">
+                <div className="flex flex-col h-full">
+                  <div className="h-3/4 bg-gray-200 relative">
+                    {/* Replace with <Image /> for production */}
+                    <img
+                      src={project.img}
+                      alt={translation(project.title)}
+                      className="w-full h-full transition-transform duration-500 group-hover:scale-105"
+                    />
+                    {/* <div className="absolute inset-0 bg-gradient-to-br from-[#62adb7] to-[#1a2f6e] opacity-80" /> */}
                   </div>
-                  <a href={project.link} target="_blank" className="text-[#62adb7] font-semibold hover:underline">
-                    {translation('viewMore')} →
-                  </a>
+                  <div className="px-8 py-5 flex flex-col flex-grow dark:text-white bg-white">
+                    <h3 className="text-2xl font-bold mb-3">{translation(project.title)}</h3>
+                    <p className="text-sm opacity-70 mb-3 flex-grow">{translation(project.description)}</p>
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {project.tags.map(tag => (
+                        <span key={tag} className="text-[10px] uppercase bg-black/10 dark:bg-white/10 px-2 py-1 rounded">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <a href={project.link} target="_blank" className="text-[#62adb7] font-semibold hover:underline">
+                      {translation('viewMore')} →
+                    </a>
+                  </div>
                 </div>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          
+        </div>
       </AnimateOnScroll>
     </section>
   );
