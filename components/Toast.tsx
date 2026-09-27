@@ -43,7 +43,7 @@ export default function Toast({ type, message, onClose }: ToastProps) {
         >
             <button
                 onClick={onClose}
-                className="text-gray-400 hover:text-black text-lg"
+                className="text-gray-400 hover:text-black text-lg cursor-pointer"
             >
                 ×
             </button>

@@ -34,15 +34,15 @@ export default function Intro() {
         className="relative w-full md:w-[40%] h-[400px] flex items-center justify-center order-2 md:rtl:order-1 md:ltr:order-2"
       >
         <div className="absolute top-0 left-0 w-48 h-64 sm:w-96 sm:h-80 rounded-2xl overflow-hidden shadow-2xl rotate-[-10deg] hover:rotate-0 transition-transform duration-500">
-          <img src="https://images.unsplash.com/photo-1527427337751-fdca2f128ce5?auto=format&fit=crop&q=80&w=800" className="w-full h-full object-cover" alt="Dev" />
+          <img src="slide3.avif" className="w-full h-full object-cover" alt="Dev" />
         </div>
 
         <div className="absolute top-16 right-0 sm:-right-10 w-48 h-64 sm:w-96 sm:h-80 rounded-2xl overflow-hidden shadow-2xl rotate-[10deg] hover:rotate-0 transition-transform duration-500">
-          <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?auto=format&fit=crop&q=80&w=800" className="w-full h-full object-cover" alt="Code" />
+          <img src="slide2.avif" className="w-full h-full object-cover" alt="Code" />
         </div>
 
         <div className="absolute bottom-4 sm:-bottom-16 left-16 w-48 h-64 sm:w-96 sm:h-80 rounded-2xl overflow-hidden shadow-2xl border-4 border-white dark:border-gray-950">
-          <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=800" className="w-full h-full object-cover" alt="Modern Dev" />
+          <img src="slide1.avif" className="w-full h-full object-cover" alt="Modern Dev" />
         </div>
       </AnimateOnScroll>
 

@@ -86,7 +86,7 @@ export default function Footer() {
             </div>
 
             {/* Social and Download CV */}
-            <div className="space-y-2.5 flex flex-col items-center justify-center">
+            <div className="space-y-2.5 w-full">
               <ul className="space-y-1.5 text-base flex sm:justify-start justify-center items-center gap-4 mb-3">
                 {/* WhatsApp */}
                 <li>
@@ -134,7 +134,7 @@ export default function Footer() {
               </ul>
               
               <a
-                className="group sm:w-fit w-full px-7 py-3 flex items-center justify-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 active:scale-105 transition cursor-pointer borderBlack bg-primary text-black border-none"
+                className="group w-full px-7 py-3 flex items-center justify-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 active:scale-105 transition cursor-pointer borderBlack bg-primary text-black border-none"
                 href="/AsmaAlhuraiby.pdf"
                 download
               >
@@ -162,7 +162,7 @@ export default function Footer() {
         <button 
           id="footer-back-to-top" 
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="inline-flex items-center gap-2 bg-gradient-to-b from-primary to-primary/40 px-4 py-4 rounded-full text-xs tracking-wider uppercase btn-press duration-200 transition-all cursor-pointer shadow-lg shrink-0"
+          className="inline-flex items-center gap-2 cursor-pointer bg-gradient-to-b from-primary to-primary/40 px-4 py-4 rounded-full text-xs tracking-wider uppercase btn-press duration-200 transition-all cursor-pointer shadow-lg shrink-0"
         >
           <svg className="w-5 h-5 text-black shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
             <line x1="12" y1="19" x2="12" y2="5"></line>

@@ -10,7 +10,7 @@ export default function SubmitBtn({ loading }: { loading: boolean }) {
   return (
     <button
       type="submit"
-      className="group w-full h-14 bg-white dark:bg-transparent border border-transparent dark:border-slate-800 text-primary hover:text-white rounded-2xl flex items-center justify-center gap-3 font-bold hover:bg-[#62adb7] transition-all"
+      className="group w-full h-14 cursor-pointer bg-white dark:bg-transparent border border-transparent dark:border-slate-800 text-primary hover:text-white rounded-2xl flex items-center justify-center gap-3 font-bold hover:bg-[#62adb7] transition-all"
       disabled={loading}
     >
       {loading ? (

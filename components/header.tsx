@@ -11,7 +11,7 @@ import { useTranslations } from 'next-intl';
 import { useLocale } from "next-intl";
 import { useRouter, usePathname } from "next/navigation";
 import { useTransition } from "react";
-import { BsSun, BsMoon, BsArrowRight } from "react-icons/bs";
+import { BsSun, BsMoon, BsArrowRight,BsWhatsapp, BsEnvelope, BsGithub, BsTelephone } from "react-icons/bs";
 import { useTheme } from "@/context/theme-context";
 
 export default function Header() {
@@ -49,10 +49,10 @@ export default function Header() {
 
   return (
 
-    <header className={`z-[999] fixed top-0 left-0 right-0 w-full ${scrollbar ? 'py-1 border-white border-opacity-40 bg-white bg-opacity-80 shadow-lg shadow-black/[0.03] backdrop-blur-[0.5rem]  sm:rounded-none dark:bg-gray-950 dark:border-black/40 dark:bg-opacity-75':''}`}>
+    <header className={`z-[999] fixed top-0 left-0 right-0 w-full ${scrollbar ? 'py-1 border-white border-opacity-40 bg-white bg-opacity-80 shadow-lg shadow-black/[0.03] backdrop-blur-[0.5rem]  sm:rounded-none dark:bg-gray-950 dark:border-black/40 dark:bg-opacity-75' : ''}`}>
 
       {/* Main Container */}
-      <nav className={`container mx-auto w-full px-3 py-1  flex items-center justify-between  ${scrollbar ? '':'lg:mt-4 rounded-none border border-white border-opacity-40 bg-white bg-opacity-80 shadow-lg shadow-black/[0.03] backdrop-blur-[0.5rem]  sm:rounded-full dark:bg-gray-950 dark:border-black/40 dark:bg-opacity-75'}`}>
+      <nav className={`container mx-auto w-full px-3 py-1  flex items-center justify-between  ${scrollbar ? '' : 'lg:mt-4 rounded-none border border-white border-opacity-40 bg-white bg-opacity-80 shadow-lg shadow-black/[0.03] backdrop-blur-[0.5rem]  sm:rounded-full dark:bg-gray-950 dark:border-black/40 dark:bg-opacity-75'}`}>
 
         {/* Left: Logo */}
         <motion.div
@@ -75,42 +75,42 @@ export default function Header() {
         {/* Center: Navigation */}
         <ul className="lg:flex hidden w-[22rem] flex-wrap items-center justify-center text-[0.9rem] font-medium text-Gray500 sm:w-[initial] sm:flex-nowrap sm:gap-5">
           {links.map((link) => (
-            link.name != 'Contact' &&(
-            <motion.li
-              className="h-3/4 flex items-center justify-center relative"
-              key={link.hash}
-              initial={{ y: -100, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-            >
-              <Link
-                className={clsx(
-                  "flex w-full items-center justify-center px-3 py-1 hover:text-gray-950 transition dark:text-Gray500 dark:hover:text-gray-300",
-                  {
-                    "text-gray-950 dark:text-gray-200":
-                      activeSection === link.name,
-                  }
-                )}
-                href={link.hash}
-                onClick={() => {
-                  setActiveSection(link.name);
-                  setTimeOfLastClick(Date.now());
-                }}
+            link.name != 'Contact' && (
+              <motion.li
+                className="h-3/4 flex items-center justify-center relative"
+                key={link.hash}
+                initial={{ y: -100, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
               >
-                {translation(link.name)}
+                <Link
+                  className={clsx(
+                    "flex w-full items-center justify-center px-3 py-1 hover:text-gray-950 transition dark:text-Gray500 dark:hover:text-gray-300",
+                    {
+                      "text-gray-950 dark:text-gray-200":
+                        activeSection === link.name,
+                    }
+                  )}
+                  href={link.hash}
+                  onClick={() => {
+                    setActiveSection(link.name);
+                    setTimeOfLastClick(Date.now());
+                  }}
+                >
+                  {translation(link.name)}
 
-                {link.name === activeSection && (
-                  <motion.span
-                    className="bg-primary/20 rounded-full absolute inset-0 -z-10 dark:bg-primary/20"
-                    layoutId="activeSection"
-                    transition={{
-                      type: "spring",
-                      stiffness: 380,
-                      damping: 30,
-                    }}
-                  ></motion.span>
-                )}
-              </Link>
-            </motion.li>
+                  {link.name === activeSection && (
+                    <motion.span
+                      className="bg-primary/20 rounded-full absolute inset-0 -z-10 dark:bg-primary/20"
+                      layoutId="activeSection"
+                      transition={{
+                        type: "spring",
+                        stiffness: 380,
+                        damping: 30,
+                      }}
+                    ></motion.span>
+                  )}
+                </Link>
+              </motion.li>
             )
           ))}
         </ul>
@@ -127,7 +127,7 @@ export default function Header() {
         >
           <div className="flex items-center gap-3">
             <button
-              className="w-[1.8rem] h-[1.8rem] sm:w-[2.5rem] sm:h-[2.5rem] bg-white bg-opacity-80 backdrop-blur-[0.5rem] border border-white hover:border-primary border-opacity-40 shadow-2xl rounded-full flex items-center justify-center hover:scale-[1.15] transition-all dark:bg-gray-950"
+              className="w-[1.8rem] h-[1.8rem] sm:w-[2.5rem] cursor-pointer sm:h-[2.5rem] bg-white bg-opacity-80 backdrop-blur-[0.5rem] border border-white hover:border-primary border-opacity-40 shadow-2xl rounded-full flex items-center justify-center hover:scale-[1.15] transition-all dark:bg-gray-950"
               onClick={toggleTheme}
             >
               {theme === "light" ? <BsSun /> : <BsMoon />}
@@ -136,7 +136,7 @@ export default function Header() {
             <button
               onClick={switchLanguage}
               disabled={isPending}
-              className="w-[1.8rem] h-[1.8rem] sm:w-[2.5rem] sm:h-[2.5rem] bg-white bg-opacity-80 backdrop-blur-[0.5rem] border border-white hover:border-primary border-opacity-40 shadow-2xl rounded-full flex items-center justify-center hover:scale-[1.15] transition-all dark:bg-gray-950"
+              className="w-[1.8rem] h-[1.8rem] sm:w-[2.5rem] sm:h-[2.5rem] cursor-pointer bg-white bg-opacity-80 backdrop-blur-[0.5rem] border border-white hover:border-primary border-opacity-40 shadow-2xl rounded-full flex items-center justify-center hover:scale-[1.15] transition-all dark:bg-gray-950"
             >
               <span className="sm:text-sm text-xs font-bold">
                 {locale === "en" ? "ع" : "EN"}
@@ -145,7 +145,7 @@ export default function Header() {
 
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="lg:hidden block p-2 rounded-lg text-slate-600 dark:text-slate-300"
+              className="lg:hidden block p-2 rounded-lg text-slate-600 dark:text-slate-300 cursor-pointer"
             >
               {isOpen ? (
                 <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"></path></svg>
@@ -167,23 +167,80 @@ export default function Header() {
                   <div className="px-4 pt-6 space-y-2">
                     {/* Your Menu Links */}
                     {links.map((link) => (
-                      link.name != 'Contact' &&(
-                      <a
-                        key={link.hash}
-                        href={link.hash}
-                        onClick={() => setIsOpen(false)} // Close menu on click
-                        className="block px-4 py-3 text-lg font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full"
-                      >
-                        {translation(link.name)}
-                      </a>
+                      link.name != 'Contact' && (
+                        <a
+                          key={link.hash}
+                          href={link.hash}
+                          onClick={() => setIsOpen(false)} // Close menu on click
+                          className="block px-4 py-3 text-lg font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full"
+                        >
+                          {translation(link.name)}
+                        </a>
                       )
                     ))}
-                  <Link href={'#contact'}
-                    className="flex  h-[2.5rem] px-3 bg-gradient-to-r from-[#62adb7] to-[#62adb754] text-black font-bold bg-opacity-80 backdrop-blur-[0.5rem]  shadow-2xl rounded-full items-center justify-center gap-1 hover:scale-[1.15] transition-all dark:bg-[#62adb7]"
-                  >
-                    <span>{translation('Contact')}</span>
-                    <BsArrowRight className="opacity-70 group-hover:translate-x-1 transition rtl:rotate-180 mt-1" />
-                  </Link>
+
+                    <div className="space-y-2.5 w-full">
+                      <ul className="space-y-1.5 text-base flex sm:justify-start justify-center items-center gap-4 mb-3">
+                        {/* WhatsApp */}
+                        <li>
+                          <a
+                            href="https://wa.me/967772554459"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center justify-center w-12 h-12 rounded-full bg-slate-900 border border-slate-800 text-white hover:bg-primary hover:text-white transition-all duration-300"
+                          >
+                            <BsWhatsapp size={22} />
+                          </a>
+                        </li>
+
+                        {/* Email */}
+                        <li>
+                          <a
+                            href="mailto:asmahuraiby@gmail.com"
+                            className="flex items-center justify-center w-12 h-12 rounded-full bg-slate-900 border border-slate-800 text-white hover:bg-primary hover:text-white transition-all duration-300"
+                          >
+                            <BsEnvelope size={22} />
+                          </a>
+                        </li>
+
+                        {/* GitHub */}
+                        <li>
+                          <a
+                            href="https://github.com/Asmahuraiby"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center justify-center w-12 h-12 rounded-full bg-slate-900 border border-slate-800 text-white hover:bg-primary hover:text-white transition-all duration-300"
+                          >
+                            <BsGithub size={22} />
+                          </a>
+                        </li>
+
+                        {/* Phone */}
+                        <li>
+                          <a
+                            href="tel:+967772554459"
+                            className="flex items-center justify-center w-12 h-12 rounded-full bg-slate-900 border border-slate-800 text-white hover:bg-primary hover:text-white transition-all duration-300"
+                          >
+                            <BsTelephone size={22} />
+                          </a>
+                        </li>
+                      </ul>
+
+                      <a
+                        className="group w-full px-7 py-3 flex items-center justify-center text-black font-bold gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 active:scale-105 transition cursor-pointer borderBlack bg-primary border-none"
+                        href="/AsmaAlhuraiby.pdf"
+                        download
+                      >
+                        {translation('DownloadCV')}{" "}
+                        <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                      </a>
+                    </div>
+                    <Link href={'#contact'} onClick={() => setIsOpen(false)}
+                      className="flex gap-2 px-3 py-3 bg-gradient-to-r from-[#62adb7] to-[#62adb754] text-black font-bold bg-opacity-80 backdrop-blur-[0.5rem]  shadow-2xl rounded-full items-center justify-center hover:scale-[1.15] transition-all dark:bg-[#62adb7]"
+                    >
+                      <span>{translation('Contact')}</span>
+                      <BsArrowRight className="opacity-70 group-hover:translate-x-1 transition rtl:rotate-180 mt-1" />
+                    </Link>
                   </div>
                 </motion.div>
               )}
