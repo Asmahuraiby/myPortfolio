@@ -78,7 +78,7 @@ export default function Projects() {
                         </span>
                       ))}
                     </div>
-                    <a href={project.link} target="_blank" className="flex gap-2 text-[#62adb7] font-semibold hover:underline">
+                    <a href={project.link} target="_blank" className="flex gap-2 text-[#62adb7] font-semibold hover:underline items-center">
                       {translation('ViewProject')}
                       <BsArrowRight className="opacity-70 group-hover:translate-x-1 transition rtl:rotate-180 mt-1" />
                     </a>
@@ -122,8 +122,9 @@ export default function Projects() {
                         </span>
                       ))}
                     </div>
-                    <a href={project.link} target="_blank" className="text-[#62adb7] font-semibold hover:underline">
-                      {translation('viewMore')} →
+                    <a href={project.link} target="_blank" className="text-[#62adb7] font-semibold hover:underline flex items-center gap-2">
+                      {translation('viewMore')}
+                      <BsArrowRight className="opacity-70 group-hover:translate-x-1 transition rtl:rotate-180 mt-1" />
                     </a>
                   </div>
                 </div>
