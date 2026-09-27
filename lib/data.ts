@@ -166,7 +166,7 @@ export const projectsData = [
     link: "https://biqalati.com/"
   },
   {
-    img:"goodstoor.png",
+    img:"goodstores.png",
     title: "GoodStores_title",
     description: "GoodStores_desc",
     tags: ["Bootstrap", "Frontend","Some Edit in Backend"],
