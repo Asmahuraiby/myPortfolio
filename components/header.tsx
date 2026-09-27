@@ -11,7 +11,7 @@ import { useTranslations } from 'next-intl';
 import { useLocale } from "next-intl";
 import { useRouter, usePathname } from "next/navigation";
 import { useTransition } from "react";
-import { BsSun, BsMoon, BsArrowRight,BsWhatsapp, BsEnvelope, BsGithub, BsTelephone } from "react-icons/bs";
+import { BsSun, BsMoon, BsArrowRight,BsWhatsapp, BsEnvelope, BsGithub, BsTelephone,BsGlobe } from "react-icons/bs";
 import { useTheme } from "@/context/theme-context";
 
 export default function Header() {
@@ -127,7 +127,7 @@ export default function Header() {
         >
           <div className="flex items-center gap-3">
             <button
-              className="w-[1.8rem] h-[1.8rem] sm:w-[2.5rem] cursor-pointer sm:h-[2.5rem] bg-white bg-opacity-80 backdrop-blur-[0.5rem] border border-white hover:border-primary border-opacity-40 shadow-2xl rounded-full flex items-center justify-center hover:scale-[1.15] transition-all dark:bg-gray-950"
+              className="w-[1.8rem] h-[1.8rem] sm:w-[2.5rem] cursor-pointer sm:h-[2.5rem] bg-white bg-opacity-80 backdrop-blur-[0.5rem] border border-slate-400 dark:border-white hover:border-primary border-opacity-40 shadow-2xl rounded-full flex items-center justify-center hover:scale-[1.15] transition-all dark:bg-gray-950"
               onClick={toggleTheme}
             >
               {theme === "light" ? <BsSun /> : <BsMoon />}
@@ -136,10 +136,11 @@ export default function Header() {
             <button
               onClick={switchLanguage}
               disabled={isPending}
-              className="w-[1.8rem] h-[1.8rem] sm:w-[2.5rem] sm:h-[2.5rem] cursor-pointer bg-white bg-opacity-80 backdrop-blur-[0.5rem] border border-white hover:border-primary border-opacity-40 shadow-2xl rounded-full flex items-center justify-center hover:scale-[1.15] transition-all dark:bg-gray-950"
+              className="w-[1.8rem] h-[1.8rem] sm:w-[2.5rem] sm:h-[2.5rem] cursor-pointer bg-white bg-opacity-80 backdrop-blur-[0.5rem] border border-slate-400 dark:border-white hover:border-primary border-opacity-40 shadow-2xl rounded-full flex items-center justify-center hover:scale-[1.15] transition-all dark:bg-gray-950"
             >
               <span className="sm:text-sm text-xs font-bold">
-                {locale === "en" ? "ع" : "EN"}
+                {/* {locale === "en" ? "ع" : "EN"} */}
+                <BsGlobe />
               </span>
             </button>
 
