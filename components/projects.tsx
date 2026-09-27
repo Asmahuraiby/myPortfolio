@@ -98,7 +98,7 @@ export default function Projects() {
             modules={[EffectCards, Pagination, Autoplay]}
             autoplay={{ delay: 3000 }}
             loop={true}
-            className="w-[280px] h-[400px] sm:w-[450px] sm:h-[500px]"
+            className="w-[280px] h-[430px] sm:w-[450px] sm:h-[500px]"
           >
             {projectsData.map((project, index) => (
               <SwiperSlide key={index} className="rounded-3xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-lg">
@@ -112,12 +112,12 @@ export default function Projects() {
                     />
                     {/* <div className="absolute inset-0 bg-gradient-to-br from-[#62adb7] to-[#1a2f6e] opacity-80" /> */}
                   </div>
-                  <div className="px-8 py-5 flex flex-col flex-grow dark:text-white bg-white">
+                  <div className="px-8 py-5 flex flex-col flex-grow bg-white text-black">
                     <h3 className="text-2xl font-bold mb-3">{translation(project.title)}</h3>
                     <p className="text-sm opacity-70 mb-3 flex-grow">{translation(project.description)}</p>
                     <div className="flex flex-wrap gap-2 mb-4">
                       {project.tags.map(tag => (
-                        <span key={tag} className="text-[10px] uppercase bg-black/10 dark:bg-white/10 px-2 py-1 rounded">
+                        <span key={tag} className="text-[10px] uppercase bg-black/10  px-2 py-1 rounded">
                           {tag}
                         </span>
                       ))}
