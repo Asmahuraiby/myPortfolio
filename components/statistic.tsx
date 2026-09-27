@@ -20,7 +20,7 @@ export default function Intro() {
         <div className="sm:text-lg text-base text-slate-500 dark:text-slate-400 tracking-wider font-semibold uppercase mt-2">{translation('doneProjects')}</div>
       </div>
       <div className="text-center p-3">
-        <div className="text-3xl md:text-4xl font-display font-extrabold text-primary"><Counter from={0} to={99.5} />%</div>
+        <div className="text-3xl md:text-4xl font-display font-extrabold text-primary"><Counter from={0} to={99} />%</div>
         <div className="sm:text-lg text-base text-slate-500 dark:text-slate-400 tracking-wider font-semibold uppercase mt-2">{translation('implementRate')}</div>
       </div>
     </div>
